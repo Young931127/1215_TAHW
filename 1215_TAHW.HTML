@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+</head>
+<body>
+
+<script>
+    
+    function add(x, y) {
+        return x + y;
+    }
+
+    
+    function subtract(x, y) {
+        return x - y;
+    }
+
+    
+    function multiply(x, y) {
+        return x * y;
+    }
+
+    
+    function divide(x, y) {
+        if (y !== 0) {
+            return x / y;
+        } else {
+            return "Cannot divide by zero";
+        }
+    }
+
+    
+    function getUserInput() {
+        var num1 = parseFloat(prompt("Enter the first number:"));
+
+        // 檢查第一個數字是否為有效數字
+        if (isNaN(num1)) {
+            alert("Please enter valid number.");
+            return getUserInput();
+        }
+
+        var num2 = parseFloat(prompt("Enter the second number:"));
+
+        // 檢查第二個數字是否為有效數字
+        if (isNaN(num2)) {
+            alert("Please enter valid number.");
+            return getUserInput();
+        }
+
+        var operation = prompt("Choose an operation: +, -, *, /").toLowerCase();
+
+        // 檢查操作是否為有效操作符號
+        if (["+", "-", "*", "/"].indexOf(operation) === -1) {
+            alert("Please enter valid operation: +, -, *, /.");
+            return getUserInput();
+        }
+
+        // 執行選定的操作
+        switch (operation) {
+            case "+":
+                alert("Result: " + add(num1, num2));
+                break;
+            case "-":
+                alert("Result: " + subtract(num1, num2));
+                break;
+            case "*":
+                alert("Result: " + multiply(num1, num2));
+                break;
+            case "/":
+                alert("Result: " + divide(num1, num2));
+                break;
+        }
+    }
+
+    
+    while (true) {
+        getUserInput();
+        var continueCalculation = prompt("Do you want to perform another calculation? (yes/no)").toLowerCase();
+        if (continueCalculation !== "yes") {
+            break;
+        }
+    }
+</script>
+
+</body>
+</html>
+
